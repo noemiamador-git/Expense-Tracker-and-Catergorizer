@@ -19,18 +19,17 @@
           <p class="eyebrow">Simple money control</p>
           <h1>Citrus Cashflow</h1>
           <p class="hero-copy">
-            Track your spending, subscriptions, and categories in one sunny dashboard.
-            Start with a blank canvas, enter your own numbers, and shape the dashboard around your real money life.
+            Enter your monthly balance, add each expense for the month, and watch your totals update instantly in one warm, easy dashboard.
           </p>
         </div>
         <div class="hero-badge">
-          <span>Remaining monthly budget</span>
-          <strong id="balance">Set your budget</strong>
-          <small>add your budget first, then log expenses and subscriptions</small>
-          <form id="budget-form" class="budget-form">
-            <label for="monthly-budget" class="sr-only">Monthly budget</label>
-            <input id="monthly-budget" type="number" min="0" step="0.01" placeholder="Enter your monthly budget" required />
-            <button type="submit">Save budget</button>
+          <span>Remaining this month</span>
+          <strong id="remaining-balance">Set your monthly balance</strong>
+          <small>your remaining amount updates every time you add a recent expense</small>
+          <form id="balance-form" class="budget-form">
+            <label for="monthly-balance" class="sr-only">Monthly balance</label>
+            <input id="monthly-balance" type="number" min="0" step="0.01" placeholder="Enter your monthly balance" required />
+            <button type="submit">Save balance</button>
           </form>
         </div>
       </header>
@@ -39,16 +38,16 @@
         <section class="panel panel-accent form-panel">
           <div class="panel-heading">
             <div>
-              <p class="section-label">Quick add</p>
-              <h2>Log a money move</h2>
+              <p class="section-label">Expense input</p>
+              <h2>Add an expense</h2>
             </div>
             <div class="spark"></div>
           </div>
 
-          <form id="money-form" class="money-form">
+          <form id="expense-form" class="money-form">
             <label>
-              Title
-              <input type="text" id="title" placeholder="What did you pay for?" required />
+              Expense name
+              <input type="text" id="title" placeholder="Groceries, gas, rent..." required />
             </label>
 
             <div class="form-row">
@@ -57,38 +56,31 @@
                 <input type="number" id="amount" min="0" step="0.01" placeholder="0.00" required />
               </label>
               <label>
-                Type
-                <select id="type">
-                  <option value="expense">Expense</option>
-                  <option value="subscription">Subscription</option>
-                </select>
+                Category
+                <input type="text" id="category" list="category-suggestions" placeholder="Food, bills, travel..." required />
+                <datalist id="category-suggestions">
+                  <option value="Food"></option>
+                  <option value="Bills"></option>
+                  <option value="Housing"></option>
+                  <option value="Transport"></option>
+                  <option value="Shopping"></option>
+                  <option value="Health"></option>
+                </datalist>
               </label>
             </div>
 
             <div class="form-row">
               <label>
-                Category
-                <input type="text" id="category" list="category-suggestions" placeholder="Create your own category" required />
-                <datalist id="category-suggestions">
-                  <option value="Food"></option>
-                  <option value="Housing"></option>
-                  <option value="Transport"></option>
-                  <option value="Entertainment"></option>
-                  <option value="Utilities"></option>
-                  <option value="Health"></option>
-                </datalist>
+                Date
+                <input type="date" id="date" required />
               </label>
               <label>
-                Billing
-                <select id="billing">
-                  <option value="one-time">One-time</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="yearly">Yearly</option>
-                </select>
+                Note
+                <input type="text" id="note" placeholder="Optional detail" />
               </label>
             </div>
 
-            <button type="submit">Add entry</button>
+            <button type="submit">Add to recent entries</button>
           </form>
         </section>
 
@@ -102,16 +94,16 @@
 
           <div class="metric-grid">
             <article>
+              <span>Monthly balance</span>
+              <strong id="monthly-balance-total">$0</strong>
+            </article>
+            <article>
               <span>Total expenses</span>
               <strong id="total-expenses">$0</strong>
             </article>
             <article>
-              <span>Subscriptions</span>
-              <strong id="total-subscriptions">$0</strong>
-            </article>
-            <article>
-              <span>Biggest category</span>
-              <strong id="top-category">—</strong>
+              <span>Remaining</span>
+              <strong id="remaining-summary">$0</strong>
             </article>
           </div>
 
@@ -121,7 +113,7 @@
         <section class="panel ledger-panel">
           <div class="panel-heading">
             <div>
-              <p class="section-label">Ledger</p>
+              <p class="section-label">Recent activity</p>
               <h2>Recent entries</h2>
             </div>
           </div>
