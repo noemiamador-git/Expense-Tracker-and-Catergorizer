@@ -20,13 +20,18 @@
           <h1>Citrus Cashflow</h1>
           <p class="hero-copy">
             Track your spending, subscriptions, and categories in one sunny dashboard.
-            Built to feel friendly, fast, and a little more fun than a spreadsheet.
+            Start with a blank canvas, enter your own numbers, and shape the dashboard around your real money life.
           </p>
         </div>
         <div class="hero-badge">
-          <span>Monthly balance</span>
-          <strong id="balance">$0</strong>
-          <small>after subscriptions and daily spending</small>
+          <span>Remaining monthly budget</span>
+          <strong id="balance">Set your budget</strong>
+          <small>add your budget first, then log expenses and subscriptions</small>
+          <form id="budget-form" class="budget-form">
+            <label for="monthly-budget" class="sr-only">Monthly budget</label>
+            <input id="monthly-budget" type="number" min="0" step="0.01" placeholder="Enter your monthly budget" required />
+            <button type="submit">Save budget</button>
+          </form>
         </div>
       </header>
 
@@ -43,13 +48,13 @@
           <form id="money-form" class="money-form">
             <label>
               Title
-              <input type="text" id="title" placeholder="Groceries, Spotify, Rent..." required />
+              <input type="text" id="title" placeholder="What did you pay for?" required />
             </label>
 
             <div class="form-row">
               <label>
                 Amount
-                <input type="number" id="amount" min="0" step="0.01" placeholder="45.00" required />
+                <input type="number" id="amount" min="0" step="0.01" placeholder="0.00" required />
               </label>
               <label>
                 Type
@@ -63,15 +68,15 @@
             <div class="form-row">
               <label>
                 Category
-                <select id="category">
-                  <option>Food</option>
-                  <option>Housing</option>
-                  <option>Transport</option>
-                  <option>Entertainment</option>
-                  <option>Utilities</option>
-                  <option>Health</option>
-                  <option>Other</option>
-                </select>
+                <input type="text" id="category" list="category-suggestions" placeholder="Create your own category" required />
+                <datalist id="category-suggestions">
+                  <option value="Food"></option>
+                  <option value="Housing"></option>
+                  <option value="Transport"></option>
+                  <option value="Entertainment"></option>
+                  <option value="Utilities"></option>
+                  <option value="Health"></option>
+                </datalist>
               </label>
               <label>
                 Billing
