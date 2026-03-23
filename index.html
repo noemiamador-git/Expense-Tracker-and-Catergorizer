@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citrus Cashflow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-card">
+        <div>
+          <p class="eyebrow">Simple money control</p>
+          <h1>Citrus Cashflow</h1>
+          <p class="hero-copy">
+            Track your spending, subscriptions, and categories in one sunny dashboard.
+            Built to feel friendly, fast, and a little more fun than a spreadsheet.
+          </p>
+        </div>
+        <div class="hero-badge">
+          <span>Monthly balance</span>
+          <strong id="balance">$0</strong>
+          <small>after subscriptions and daily spending</small>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel panel-accent form-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Quick add</p>
+              <h2>Log a money move</h2>
+            </div>
+            <div class="spark"></div>
+          </div>
+
+          <form id="money-form" class="money-form">
+            <label>
+              Title
+              <input type="text" id="title" placeholder="Groceries, Spotify, Rent..." required />
+            </label>
+
+            <div class="form-row">
+              <label>
+                Amount
+                <input type="number" id="amount" min="0" step="0.01" placeholder="45.00" required />
+              </label>
+              <label>
+                Type
+                <select id="type">
+                  <option value="expense">Expense</option>
+                  <option value="subscription">Subscription</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                Category
+                <select id="category">
+                  <option>Food</option>
+                  <option>Housing</option>
+                  <option>Transport</option>
+                  <option>Entertainment</option>
+                  <option>Utilities</option>
+                  <option>Health</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>
+                Billing
+                <select id="billing">
+                  <option value="one-time">One-time</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select>
+              </label>
+            </div>
+
+            <button type="submit">Add entry</button>
+          </form>
+        </section>
+
+        <section class="panel summary-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Overview</p>
+              <h2>This month at a glance</h2>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <article>
+              <span>Total expenses</span>
+              <strong id="total-expenses">$0</strong>
+            </article>
+            <article>
+              <span>Subscriptions</span>
+              <strong id="total-subscriptions">$0</strong>
+            </article>
+            <article>
+              <span>Biggest category</span>
+              <strong id="top-category">—</strong>
+            </article>
+          </div>
+
+          <div class="category-stack" id="category-stack"></div>
+        </section>
+
+        <section class="panel ledger-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Ledger</p>
+              <h2>Recent entries</h2>
+            </div>
+          </div>
+          <div id="entries" class="entries"></div>
+        </section>
+
+        <section class="panel tips-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Money pulse</p>
+              <h2>Helpful nudges</h2>
+            </div>
+          </div>
+
+          <div class="tip-list" id="tips"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
